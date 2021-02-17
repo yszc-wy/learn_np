@@ -137,15 +137,18 @@ class HttpRequest : public copyable
   {
     string field(start, colon);
     ++colon;
+    // 移动到colon不为space(跳过空格)
     while (colon < end && isspace(*colon))
     {
       ++colon;
     }
+    // 跳过尾部空格
     string value(colon, end);
     while (!value.empty() && isspace(value[value.size()-1]))
     {
       value.resize(value.size()-1);
     }
+    // 使用map保存head
     headers_[field] = value;
   }
 

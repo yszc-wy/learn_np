@@ -55,6 +55,7 @@ void Acceptor::listen(){
   listenning_=true;
   // 在这里才打开事件监听
   acceptChannel_.enableReading();
+  // acceptChannel_.enableET();
 }
 
 
@@ -97,7 +98,8 @@ void Acceptor::handleRead(){
   int dup=0;
   while((connfd=acceptSocket_.accept(&peerAddr))>=0)
   {
-    if(connfd>=100000){
+    if(connfd>=65535){
+      LOG_WARN << "Open too many fd in Acceptor";
       ::close(connfd);
       continue;
     }
@@ -111,15 +113,20 @@ void Acceptor::handleRead(){
     }
     ++dup;
   }
-  // if(dup!=1)
-    // std::cout<<"\n dup accept! "<<dup<<std::endl;
 
   if(errno==EMFILE)
   {
-    ::close(idleFd_);
-    idleFd_ = ::accept(acceptSocket_.fd(), NULL, NULL);
-    ::close(idleFd_);
-    idleFd_ = ::open("/dev/null", O_RDONLY | O_CLOEXEC);
+    LOG_FATAL<<"Open too many fd in Acceptor (hard limit)";
   }
+  // if(dup!=1)
+    // std::cout<<"\n dup accept! "<<dup<<std::endl;
+
+  // if(errno==EMFILE)
+  // {
+    // ::close(idleFd_);
+    // idleFd_ = ::accept(acceptSocket_.fd(), NULL, NULL);
+    // ::close(idleFd_);
+    // idleFd_ = ::open("/dev/null", O_RDONLY | O_CLOEXEC);
+  // }
   
 }

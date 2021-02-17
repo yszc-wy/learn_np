@@ -83,9 +83,12 @@ void HttpServer::onMessage(const TcpConnectionPtr& conn,
 
 void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req)
 {
+  // 获取Connection字段
   const string& connection = req.getHeader("Connection");
+  // 如果是Keepalive
   bool close = connection == "close" ||
     (req.getVersion() == HttpRequest::kHttp10 && connection != "Keep-Alive");
+  // 使用连接类型初始化response
   HttpResponse response(close); 
   // 填充response
   httpCallback_(req, &response);
@@ -94,7 +97,7 @@ void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req)
   response.appendToBuffer(&buf);
   // 发送
   conn->send(&buf);
-  // 断开连接
+  // 如果不是Keepalive,就会主动断开连接
   if (response.closeConnection())
   {
     conn->shutdown();

@@ -33,9 +33,10 @@ void onRequest(const HttpRequest& req, HttpResponse* resp)
     }
   }
 
-  // 可以修改成函数注册的形式,手动路由
+  // 这里可以修改成函数注册的形式
   if (req.path() == "/")
   {
+    // 状态码,状态消息
     resp->setStatusCode(HttpResponse::k200Ok);
     resp->setStatusMessage("OK");
     resp->setContentType("text/html");
@@ -62,6 +63,7 @@ void onRequest(const HttpRequest& req, HttpResponse* resp)
   }
   else
   {
+    // 找不到就返回404 
     resp->setStatusCode(HttpResponse::k404NotFound);
     resp->setStatusMessage("Not Found");
     resp->setCloseConnection(true);

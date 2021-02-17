@@ -1,5 +1,6 @@
 #include "Channel.h"
 
+#include <sys/epoll.h>
 #include <poll.h> 
 #include <sstream>
 
@@ -12,6 +13,7 @@ using namespace yszc::net;
 const int Channel::kNoneEvent=0;
 const int Channel::kReadEvent=POLLIN | POLLPRI;
 const int Channel::kWriteEvent=POLLOUT;
+const int Channel::kEdgeTrigger=EPOLLET;
 
 Channel::Channel(EventLoop* loop,int fdArg)
   :loop_(loop),

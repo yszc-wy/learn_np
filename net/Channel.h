@@ -63,6 +63,8 @@ class Channel: noncopyable
   void enableWriting() { events_|=kWriteEvent;update(); }
   void disableWriting() { events_&=~kWriteEvent;update(); }
   bool isWriting() const { return events_ & kWriteEvent; }
+  void enableET() { events_|=kEdgeTrigger;update(); }
+  void disableET() {  events_&=~kEdgeTrigger;update(); }
   
   
 
@@ -87,6 +89,7 @@ class Channel: noncopyable
   static const int kNoneEvent;
   static const int kReadEvent;
   static const int kWriteEvent;
+  static const int kEdgeTrigger;
 
   EventLoop* loop_;
   // pollfd中的参数
