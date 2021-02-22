@@ -18,6 +18,7 @@ set(net_SRCS
   Connector.cc  
   TcpServer.cc
   TcpClient.cc
+  TimeWheel.cc
   )
 
 add_library(web_server_net ${net_SRCS})
@@ -41,6 +42,7 @@ set(HEADERS
   TcpConnection.h
   TcpServer.h
   TimerId.h
+  TimeWheel.h
   )
 install(FILES ${HEADERS} DESTINATION include/net)
 

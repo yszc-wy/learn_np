@@ -1,11 +1,17 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      
 */
 #pragma once
 
 #include "net/TcpServer.h"
+#include <unordered_set>
+#include <boost/circular_buffer.hpp>
+#include "net/TimeWheel.h"
+#include "base/Mutex.h"
+
+
 
 namespace yszc
 {
@@ -21,6 +27,7 @@ class HttpServer : noncopyable
  public:
   typedef std::function<void (const HttpRequest&,
                               HttpResponse*)> HttpCallback;
+
 
   HttpServer(EventLoop* loop,
              const InetAddress& listenAddr,
@@ -49,8 +56,19 @@ class HttpServer : noncopyable
                  Timestamp receiveTime);
   void onRequest(const TcpConnectionPtr&, const HttpRequest&);
 
+
+  void onTimer()
+  {
+    MutexLockGuard lock(mutex_);
+    list_.push_back(TimeWheel::Bucket());
+  }
+
   TcpServer server_;
   HttpCallback httpCallback_;
+
+  
+  mutable MutexLock mutex_;
+  TimeWheel::BucketList list_ GUARDED_BY(mutex_); 
 };
 
 

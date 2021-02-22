@@ -22,6 +22,8 @@ namespace net
 {
 
 class Buffer;
+class HttpServer;
+
 
 class HttpContext : public copyable
 {

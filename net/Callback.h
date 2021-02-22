@@ -15,6 +15,7 @@ class Buffer;
 class TcpConnection;
 
 typedef std::shared_ptr<TcpConnection> TcpConnectionPtr;
+typedef std::weak_ptr<TcpConnection> WeakTcpConnectionPtr;
 }
 
 typedef std::function<void()> TimerCallback;

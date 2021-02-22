@@ -20,6 +20,7 @@
 #include "InetAddress.h"
 #include "Callback.h"
 #include "Buffer.h"
+#include "net/TimeWheel.h"
 
 
 
@@ -56,6 +57,16 @@ class TcpConnection : noncopyable,
   const InetAddress& peerAddress() { return peerAddr_; }
   bool connected() const { return state_ == kConnected; }
 
+  void setTimeWheelWeakEntry(const TimeWheel::WeakEntryPtr& weak_ptr) 
+  { weak_entry_ptr_context_=weak_ptr;  }
+  
+  const TimeWheel::WeakEntryPtr& getTimeWheelWeakEntry()
+  { return weak_entry_ptr_context_;}
+
+  void setTimeWheelTail(TimeWheel::BucketList::iterator tail)
+  { tail_=tail; }
+  TimeWheel::BucketList::iterator getTimeWheelTail() 
+  { return tail_; }
 
   void setContext(const boost::any& context)
   { context_ = context; }
@@ -123,6 +134,8 @@ class TcpConnection : noncopyable,
   Buffer inputBuffer_;
   Buffer outputBuffer_;
   boost::any context_;
+  TimeWheel::WeakEntryPtr weak_entry_ptr_context_;
+  TimeWheel::BucketList::iterator tail_;
 };
 
 

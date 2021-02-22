@@ -133,6 +133,8 @@ void TcpConnection::connectDestroyed()
 
 void TcpConnection::shutdown()
 {
+  // 保证在连接时才可以断开,保证在onmessage中调用时不会被重复调用
+  // 即使shutdown之后,onmessage也会在接收到对端数据时回调
   if(state_==kConnected)
   {
     setState(kDisconnecting);

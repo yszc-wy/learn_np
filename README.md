@@ -9,8 +9,8 @@
 # 相关技术点总结
 - EventLoop 在单个线程内提供I/O事件的注册与回调,task注册(runInLoop,queueLoop),定时任务注册
 - 使用Epoll水平触发/边沿触发(Accepter)进行事件注册,非阻塞I/O,Reactor,one loop per thread
-- 基于(set)红黑树与timefd的EventLoop定时器
-- 基于timewheel关闭空闲连接(超时?)
+- 基于(set)红黑树与timefd的EventLoop定时器 (改成基于小根堆的定时器,基于heap实现一下)
+- 基于timewheel关闭空闲连接(待测试)
 - EventLoop的task队列使用eventfd来实现异步唤醒EventLoop,从而执行task任务
 - 使用多线程发挥多核cpu的优势,让Acceptor的I/O操作与TcpConnection的I/O操作在不同的线程中并行运行
 - 使用4缓冲异步日志,日志系统实现前后端,可以自由选择后端的输出函数,异步日志系统不会阻塞主线程

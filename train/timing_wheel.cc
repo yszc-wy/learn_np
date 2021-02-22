@@ -44,6 +44,7 @@ class WheelServer
       EntryPtr entry_ptr(new Entry(conn));
       list_.back().insert(entry_ptr);
       WeakEntryPtr weak_entry_ptr(entry_ptr);
+      // tcpconnection必须持有entry的弱指针,如果持有强引用会导致Entry无法析构,也就无法调用析构函数断开连接
       conn->setContext(entry_ptr);
     }  
   }
@@ -51,6 +52,7 @@ class WheelServer
                  Buffer* buf,
                  Timestamp receiveTime)
   {
+    // 就算调用了shutdown,这里依然可以接受到数据,只不过无法发送
     // 不必将原来位置的conn删除,因为movePoint移动到该位置会自动将其删除
     WeakEntryPtr weak_ptr(boost::any_cast<WeakEntryPtr>(conn->getContext()));
     EntryPtr ptr=weak_ptr.lock();
@@ -86,10 +88,10 @@ class WheelServer
   typedef std::weak_ptr<Entry> WeakEntryPtr;
   static const int kTimeGap=8;
   typedef std::unordered_set<EntryPtr> Bucket;
-  typedef boost::circular_buffer<Bucket> WheelList;
+  typedef boost::circular_buffer<Bucket> BucketList;
   
   EventLoop *loop_;
   TcpServer server_;
-  WheelList list_;
+  BucketList list_;
 };
 
