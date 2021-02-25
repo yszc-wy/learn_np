@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      负责分包、检查检验和并解析出message对象,使用messge对象回调dispatcher的函数,错误处理占了很大一部分代码量
 */
