@@ -16,9 +16,9 @@
 - 4缓冲异步日志,日志系统实现前后端,可以自由选择后端的输出函数,异步日志系统不会阻塞主线程
 - TcpServer的EventLoop与EventLoopThread之间使用task任务队列来向其他线程分派任务,并以此避免多线程下的对象访问的出现的锁争用,一个tcpconnection的发送和接收操作只会在该conn所在的线程执行
 - TcpConnection的建立与析构过程就需要TcpServer Eventloop与线程池中EventLoop之间相互协调
-![avatar](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fced55428-6057-4863-a35d-e59edd89ee41%2FUntitled.png?table=block&id=9fcc6120-46db-4070-8682-19cf032204a3&spaceId=1c520d5d-549c-43bf-9033-ff578b668b8c&width=1420&userId=978aa85b-e106-44f4-bf74-16b7b995b454&cache=v2)
+![avatar](./tcpconnection.png)
 - 对于一些需要大量计算的连接,为了避免计算操作导致降低I/O响应速度,我们可以使用线程池来执行计算任务,当任务执行完毕再使用runInLoop在TcpConnection中回调TaskComplete函数
-[avatar](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4f0aa015-104b-4dad-99ad-65edd89b64a0%2FUntitled.png?table=block&id=9080001f-fba4-44ff-a230-427765ad6516&spaceId=1c520d5d-549c-43bf-9033-ff578b668b8c&width=1260&userId=978aa85b-e106-44f4-bf74-16b7b995b454&cache=v2)
+[avatar](./threadpool.png)
 
 - ET与LT在输入输出上的区别
 

@@ -123,7 +123,3 @@ Requests: 4539172 susceed, 2 failed.
 18669 yszc      20   0  306972  11480   3320 S   0.0   0.1   5:31.23 server 
 ```
 
-- httpserver代码修改(状态机,长连接),要训练一下连接解析
-- protobuf可以讲一下
-  
-- 定时器
