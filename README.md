@@ -18,7 +18,7 @@
 - TcpConnection的建立与析构过程就需要TcpServer Eventloop与线程池中EventLoop之间相互协调
 ![avatar](./tcpconnection.png)
 - 对于一些需要大量计算的连接,为了避免计算操作导致降低I/O响应速度,我们可以使用线程池来执行计算任务,当任务执行完毕再使用runInLoop在TcpConnection中回调TaskComplete函数
-[avatar](./threadpool.png)
+![avatar](./threadpool.png)
 
 - ET与LT在输入输出上的区别
 
