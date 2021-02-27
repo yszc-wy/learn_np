@@ -20,14 +20,7 @@
 - 对于一些需要大量计算的连接,为了避免计算操作导致降低I/O响应速度,我们可以使用线程池来执行计算任务,当任务执行完毕再使用runInLoop在TcpConnection中回调TaskComplete函数
 ![avatar](./threadpool.png)
 
-- ET与LT在输入输出上的区别
 
-```
-LT模式需要读完的原因时缓冲区不为空会busy loop，比如对于listenfd，缓冲区中有多个fd等待accept,但muduo就只accept一次，下次epoll_wait 还会返回，因为listenfd缓冲区中还有连接没有完全读完，其实muduo的readbf也只执行了一次读取操作（使用了栈上空间，一次能读取的数量很多），但并不保证读完，若没有读完的会在下一次epoll_wait中触发。
-LT模式在输出缓冲区为空时需要及时取消监听写是因为只要发送缓冲区还有剩余空间epoll_wait就会返回，造成busy loop.
-ET模式需要全部读完的原因是，如果不读完，缓冲区在已经有数据的情况下再来新数据是不会通知的，最终会导致缓冲区爆满，但epoll_wait却迟迟不返回
-ET模式下发送数据，在writeBuffer不为空的情况下，一定要将Buffer中的内容填满写缓冲，如果writeBuffer不为空，又不讲fd的写缓冲写满，会导致下一次写事件一直不被触发，无法清空writeBuffer.不像LT模式需要及时取消注册，ET模式放在那里不管也行，因为写缓冲为空不会触发epoll_wait. ET模式在发送数据时要遵循先write,如果写满fd缓冲还不能完全发送数据，才注册事件，这样ET模式才可以监听到写缓冲区不满的通知
-```
 - http请求解析以行为单位解析,每当接受缓冲区接收到一行数据,就根据HttpContext的当前状态进行对应行的解析,将解析结果保存在HttpRequest中,解析完毕后调用onRequest,通过header中的Connection来决定是否在onRequest函数中执行shutdown
 
 # 测试
