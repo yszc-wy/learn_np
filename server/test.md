@@ -21,18 +21,7 @@ Speed=1590195 pages/min, 2437405 bytes/sec.
 Requests: 1589614 susceed, 581 failed.
 QPS 26493
 ```
-出现错误
-```
-20210216 03:00:07.205918Z  9028 INFO  TcpServer::newConnection [dummy] - new connection [dummy#1588728] from 127.0.0.1:46308 - TcpServer.cc:104   
-20210216 03:00:07.205998Z  9028 ERROR Transport endpoint is not connected (errno=107) sockets::shutdownWrite - SocketsOps.cc:340
-20210216 03:00:07.206016Z  9028 ERROR TcpConnection::handleError [dummy#1588728] - SO_ERROR = 32 Broken pipe - TcpConnection.cc:102
-20210216 03:00:07.206021Z  9028 INFO  TcpServer::removeConnection [dummy] - connectiondummy#1588728 - TcpServer.cc:82
-```
-webbench终止client,发送ret请求,shutdownWrite被传入接收了ret的socket,handleError被触发
-(当我们往一个对端已经close的通道写数据的时候，对方的tcp会收到这个报文，并且反馈一个reset报文，tcpdump的结果如下所示,当收到reset报文的时候，继续做select读数据的时候就会抛出Connect reset by peer的异常，从堆栈可以看得出,[接受到reset]
 
-当第一次往一个对端已经close的通道写数据的时候会和上面的情况一样，会收到reset报文，当再次往这个socket写数据的时候，就会抛出Broken pipe了 ，根据tcp的约定，当收到reset包的时候，上层必须要做出处理，调用将socket文件描述符进行关闭，其实也意味着pipe会关闭，因此会抛出这个顾名思义的异常 [对reset的fd进行了写操作]
-)
 
 - 水平触发,4线程,GET hello,release
 测试结果
@@ -58,7 +47,6 @@ QPS 74517
 10639 yszc      20   0  306812  10768   3644 S  48.8   0.1   0:12.95 Thread4                                                                      
 10638 yszc      20   0  306812  10768   3644 S  48.5   0.1   0:12.97 Thread3 
 ```
-
 
 
 - 水平触发,8线程,GET hello, release
