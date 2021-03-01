@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      与进程相关的系统调用
 */

@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      日志系统
 * Logging.h包含了字符串的预写和loging的配置和整体的log框架

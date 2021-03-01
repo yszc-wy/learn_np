@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      日志文件是对AppendFile的封装(组合的封装方式)
 * 每隔一段时间或写入一定大小的数据就会换一个文件重新写入

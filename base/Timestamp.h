@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      Timestamp使用UTC,微秒级
 * 获取当前时间使用gettimeofday,因为其开销低,精度(微秒)良好,clock_gettime精度高(纳秒)但开销大

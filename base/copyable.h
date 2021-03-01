@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      作为一个标志,表示继承的类是可拷贝的
 */

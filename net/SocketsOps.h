@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      该类负责包装底层socket相关函数,处理相关函数的错误情况,并设置一些常用sockfd配置相关的工具函数
 */

@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      RAII文件管理方式
 */

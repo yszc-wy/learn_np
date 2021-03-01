@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      为何要使用TimerId包装Timer的指针? 是为了避免用户的接口头文件过于庞大吗?
 */

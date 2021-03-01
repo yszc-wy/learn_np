@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      Poller只负责I/O复用,传出active channel,不负责消息分发(handleevent)
 * 维护正处于监听状态的Channel表

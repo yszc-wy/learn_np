@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      可以获取每个线程独有的一些全局变量,如线程id,线程名如线程id,线程名之类的
 */

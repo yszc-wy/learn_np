@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      TcpClient,输入指定的连接地址,使用start进行连接,并提供onConnection,onMessage,onWriteComplete回调接口
 */

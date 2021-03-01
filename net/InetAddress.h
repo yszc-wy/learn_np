@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      sockaddr_in4/6的包装,属于POD类型,非对象,处理ipv4,ipv6的版本和tostring等问题
 */

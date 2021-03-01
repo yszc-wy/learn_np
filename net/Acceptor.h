@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      Accept在poll中注册listenfd,向其channel的handle_read中注册函数,该函数使用系统accept获取新连接的fd,之后如果操作这个fd目前不知如何处理,就可以在此使用一个可修改的回调函数,这样既有了接口,也不必在未知下一步操作的情况下强行写代码,还降低了耦合,毕竟accept只负责获取新连接的fd
 */

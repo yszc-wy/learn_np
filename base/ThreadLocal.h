@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      使用线程特定数据函数调用创建每个线程特定的类对象
 * pthread_key_create在内核中分配一个key,每个key在线程中映射到一个特定的void指针,我们可以将分配好的数据地址赋值给void指针

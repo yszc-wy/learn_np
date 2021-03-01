@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      负责管理定时器的类型和回调函数,保存要回调的时间,Timer不负责管理timerfd,timerfd是描述符应该由channel管理,功能的实现都在TimerQueue中
 */

@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      负责生成connectfd,并在Eventloop中注册connect事件,当connect成功建立时会调用handlewrite,处理与连接相关的错误,提供了连接成功时的事件注册
 * 连接的流程并不是直接就注册connect事件,而是在loop调用connect函数,使用系统connect获取ret,根据不同的返回结果决定是否进行事件注册、重试、

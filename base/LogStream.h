@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      LogStream主要的任务就是构建<<运算符,从而构造buffer数组
 */

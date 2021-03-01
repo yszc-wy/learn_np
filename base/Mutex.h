@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      互斥封装,使用clang的线程安全组件,为mutex添加了线程id,用于保存持有该锁的线程
 * 对于pthread返回值的检查交给MCHECK

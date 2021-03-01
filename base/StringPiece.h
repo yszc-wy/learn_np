@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      表示字符串的方便工具类,主要方便在可以从C字符串中构造,可以从string中构造,且拷贝代价小
 * 和leveldb中的slice差不多

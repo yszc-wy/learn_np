@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      在第一次调用instance时创建,在线程结束时销毁
 * (一定要销毁,因为线程销毁时只会消除指针类型,具体的数据是需要手动delete的)

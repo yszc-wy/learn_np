@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      统一的线程创建接口,方便作线程相关的记录工作并对程序创建的线程作统一管理,掌握线程相关的性能指标
 * 一个服务器程序的线程数量与当前负载无关,与计算机的cpu数量有关

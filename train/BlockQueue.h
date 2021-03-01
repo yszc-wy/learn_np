@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      
 */
@@ -25,7 +24,6 @@ class BlockQueue
  private: 
   mutable MutexLock mutex_;
   std::deque<T> queue;
-  Condition
 };
 
 }

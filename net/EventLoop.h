@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      事件循环,事件循环作为一定会被包含的用户接口,其使用的大部分类被前向声明以避免头文件的膨胀,其从属对象使用unique_ptr或scoped_ptr控制生命周期
 */

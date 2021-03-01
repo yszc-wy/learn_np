@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      包装sockfd相关的系统函数的接口,以及对sockfd的配置,
 * 使用RAII对sockfd进行管理,与sockfd相关的读写操作全部定义在该类中,

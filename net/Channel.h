@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      Channel主要负责一个fd的dispatcher,enableReading中虽然有修改poller类fd的功能,但这是借助了EventLoop提供的接口实现的,不是该类的功能(属于Channel对象与Poller对象之间的联系,而非Channel对象本身的功能) Channel的生命周期是如何管理的
 * 存在问题:

@@ -1,5 +1,4 @@
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      本身由shared_ptr管理生命周期,包含Socket对象的unique_ptr,因此负责管理connection的sockfd析构,自己处理writeable事件,为readable事件提供回调接口
 * 创建:connection由使用者在连接建立获取到fd时创建

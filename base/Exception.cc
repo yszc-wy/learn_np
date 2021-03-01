@@ -1,6 +1,5 @@
 
 /*
-* Author:           yszc-wy@foxmail.com 
 * Encoding:			    utf-8
 * Description:      
 */

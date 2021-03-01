@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      管理accept获得的tcpconnection,根据acceptor提供的sockfd,将其注册到poller中,并创建tcpconnection,tcpconnection提供onConnection注册,还提供poller回调函数中的onMessage注册
 * tcpserver由用户直接使用,生命周期由用户控制

@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      四缓冲日志系统
 * 多个前端通过append调用向currentBuffer_写入logline,如果currentBuffer_已满就将其插入到fullBuffers中

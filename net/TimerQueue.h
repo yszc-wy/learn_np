@@ -1,5 +1,5 @@
 /*
-* Author:           yszc-wy@foxmail.com 
+* Author:           
 * Encoding:			    utf-8
 * Description:      持有回调接口的channel(注册回调),并负责timer的注册和fd的next时间的更新,管理Eventloop的所有时间回调事件
 */
